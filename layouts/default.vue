@@ -113,6 +113,11 @@ export default {
           icon: 'mdi-headset',
           title: 'Tickets',
           to: '/tickets'
+        },
+        {
+          icon: 'mdi-account-voice',
+          title: 'Conversations',
+          to: '/conversations'
         }
       ],
       miniVariant: true,

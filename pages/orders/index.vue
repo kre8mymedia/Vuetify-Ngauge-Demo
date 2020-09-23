@@ -1,28 +1,30 @@
 <template>
- <v-app>
-   My Tickets
- </v-app>
+  <v-container>
+    <v-row>
+      <v-col>
+        Welcome to the orders page
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      open_tickets: [],
-      closed_tickets: [],
+      orders: []
     }
   },
   created() {
-    this.getTickets();
+    this.getOrders();
   },
   methods: {
-    getTickets() {
-      fetch('/api/tickets')
+    async getOrders() {
+      fetch('/api/orders')
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        this.open_tickets = data.open_tickets;
-        this.closed_tickets = data.closed_tickets;
+        this.orders = data.orders;
       })
       .catch(err => console.log(err))
     }

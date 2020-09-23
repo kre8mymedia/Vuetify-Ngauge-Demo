@@ -28,7 +28,7 @@ app.get('/myEnv', (req, res) => {
  * ----------------------------------------
  */
 app.get('/accounts', (req, res) => {
-  fetch(`${serverHost}/api/v1/accounts`, {
+  fetch(`http://ngauge.ml/api/v1/accounts`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -46,7 +46,7 @@ app.get('/accounts', (req, res) => {
  * ----------------------------------------
  */
 app.get('/contacts', (req, res) => {
-  fetch(`${serverHost}/api/v1/contacts`, {
+  fetch(`http://ngauge.ml/api/v1/contacts`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -79,7 +79,7 @@ app.get('/products', (req, res) => {
 
 // SHOW
 app.get('/products/:product_id', (req, res) => {
-  fetch(`${serverHost}/api/v1/products/${req.params.product_id}`, {
+  fetch(`http://ngauge.ml/api/v1/products/${req.params.product_id}`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -97,7 +97,7 @@ app.get('/products/:product_id', (req, res) => {
  * ----------------------------------------
  */
 app.get('/orders', (req, res) => {
-  fetch(`${serverHost}/api/v1/orders`, {
+  fetch(`http://ngauge.ml/api/v1/orders`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -115,7 +115,7 @@ app.get('/orders', (req, res) => {
  * ----------------------------------------
  */
 app.get('/invoices', (req, res) => {
-  fetch(`${serverHost}/api/v1/invoices`, {
+  fetch(`http://ngauge.ml/api/v1/invoices`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -133,7 +133,7 @@ app.get('/invoices', (req, res) => {
  * ----------------------------------------
  */
 app.get('/tickets', (req, res) => {
-  fetch(`${serverHost}/api/v1/tickets`)
+  fetch(`http://ngauge.ml/api/v1/tickets`)
   .then(response => response.json())
   .then(data => {
     res.send(data)
@@ -146,7 +146,7 @@ app.get('/tickets', (req, res) => {
  * ----------------------------------------
  */
 app.get('/tickets/:ticket_id/comments', (req, res) => {
-  fetch(`${serverHost}/api/v1/tickets/${req.params.ticket_id}/comments`, {
+  fetch(`http://ngauge.ml/api/v1/tickets/${req.params.ticket_id}/comments`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -164,7 +164,7 @@ app.get('/tickets/:ticket_id/comments', (req, res) => {
  * ----------------------------------------
  */
 app.get('/conversations', (req, res) => {
-  fetch(`${serverHost}/api/v1/conversations`, {
+  fetch(`http://ngauge.ml/api/v1/conversations`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -181,7 +181,7 @@ app.get('/conversations', (req, res) => {
  * ----------------------------------------
  */
 app.get('/conversations/:conversation_id/messages', (req, res) => {
-  fetch(`${serverHost}/api/v1/conversations/${req.params.conversation_id}/messages`, {
+  fetch(`http://ngauge.ml/api/v1/conversations/${req.params.conversation_id}/messages`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -199,7 +199,7 @@ app.get('/conversations/:conversation_id/messages', (req, res) => {
  * ----------------------------------------
  */
 app.get('/roles', (req, res) => {
-  fetch(`${serverHost}/api/v1/roles`, {
+  fetch(`http://ngauge.ml/api/v1/roles`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -217,7 +217,7 @@ app.get('/roles', (req, res) => {
  * ----------------------------------------
  */
 app.get('/events', (req, res) => {
-  fetch(`${serverHost}/api/v1/events`, {
+  fetch(`http://ngauge.ml/api/v1/events`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }
@@ -235,7 +235,7 @@ app.get('/events', (req, res) => {
  * ----------------------------------------
  */
 app.get('/appointments', (req, res) => {
-  fetch(`${serverHost}/api/v1/appointments`, {
+  fetch(`http://ngauge.ml/api/v1/appointments`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }

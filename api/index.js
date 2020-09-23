@@ -7,7 +7,7 @@ var app = express();
  * ---------------------------------------
  */
 if(process.env.NODE_ENV === "development") {
-  var api_key = process.env.STAGING_TOKEN;
+  var api_key = process.env.DEV_TOKEN;
   var serverHost = `${process.env.API_DEV_URL}`;
 } else {
   var api_key = process.env.STAGING_TOKEN;
@@ -65,7 +65,7 @@ app.get('/contacts', (req, res) => {
  */
 // LIST
 app.get('/products', (req, res) => {
-  fetch(`https://ngauge.ml/api/v1/products`, {
+  fetch(`http://ngauge.ml/api/v1/products`, {
     headers: {
       "Authorization": `Bearer ${api_key}`
     }

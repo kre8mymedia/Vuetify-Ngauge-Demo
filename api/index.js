@@ -117,7 +117,7 @@ app.get('/orders', (req, res) => {
 app.get('/invoices', (req, res) => {
   fetch(`${serverHost}/api/v1/invoices`, {
     headers: {
-      "Authorization": `Bearer ${api_key}`
+      "Authorization": `Bearer ${api_key}` // AUTH
     }
   })
   .then(response => response.json())
@@ -134,6 +134,19 @@ app.get('/invoices', (req, res) => {
  */
 app.get('/tickets', (req, res) => {
   fetch(`${serverHost}/api/v1/tickets`)
+  .then(response => response.json())
+  .then(data => {
+    res.send(data)
+  })
+  .catch((err) => console.log(err));
+})
+
+app.get('/tickets/:ticket_id', (req, res) => {
+  fetch(`${serverHost}/api/v1/tickets/${req.params.ticket_id}`, {
+    headers: {
+      "Authorization": `Bearer ${api_key}`  // AUTH
+    }
+  })
   .then(response => response.json())
   .then(data => {
     res.send(data)

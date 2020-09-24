@@ -3,6 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   mode: 'universal',
   serverMiddleware: ["~/api/index.js"],
+  
   env: {
     apiDevUrl: process.env.API_DEV_URL || "http://ngauge.me",
     apiStagingUrl: process.env.API_STAGING_URL || "https://ngauge.ml",
@@ -13,8 +14,8 @@ export default {
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: 'Adaptech Agency',
+    title: process.env.npm_package_name || 'Adaptech',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

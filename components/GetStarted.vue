@@ -30,7 +30,7 @@
       items: [
         { title: 'View Products', url: '/products' },
         { title: 'Schedule Appointment', url: '/appointments' },
-        { title: 'Get Support' },
+        { title: 'Get Support', url: '/tickets/create' },
         { title: 'Upcoming Events' },
       ],
     }),

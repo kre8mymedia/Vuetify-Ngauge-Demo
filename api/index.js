@@ -1,6 +1,11 @@
 var express = require("express");
+var bodyParser = require('body-parser');
+const request = require('request-promise-native');
 const fetch = require("node-fetch");
 var app = express();
+
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /**---------------------------------------
  * Check the env
@@ -132,6 +137,7 @@ app.get('/invoices', (req, res) => {
  * TICKETS Routes
  * ----------------------------------------
  */
+// LIST
 app.get('/tickets', (req, res) => {
   fetch(`${serverHost}/api/v1/tickets`)
   .then(response => response.json())
@@ -139,6 +145,29 @@ app.get('/tickets', (req, res) => {
     res.send(data)
   })
   .catch((err) => console.log(err));
+})
+
+app.post('/tickets', (req, res) => {
+  const options = {
+    method: 'POST',
+    uri: `${serverHost}/api/v1/tickets`,
+    body: req.body,
+    json: true,
+    headers: {
+      "Authorization": `Bearer ${api_key}`  // AUTH
+    }
+  }
+  request(options, function (err, res, body) {
+    if (err) {
+      console.error('error posting json: ', err)
+      throw err
+    }
+    var headers = res.headers
+    var statusCode = res.statusCode
+    console.log('headers: ', headers)
+    console.log('statusCode: ', statusCode)
+    console.log('body: ', body)
+  })
 })
 
 app.get('/tickets/:ticket_id', (req, res) => {

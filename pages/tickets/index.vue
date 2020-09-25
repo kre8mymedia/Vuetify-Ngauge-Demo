@@ -19,7 +19,13 @@
             :items="open_tickets"
             :search="search"
             @click:row="handleClick"
-          ></v-data-table>
+          >
+          <template v-slot:item.created_at="{ item }">
+            <span>
+              {{ formatDate(item.created_at) }}
+            </span>
+          </template>
+          </v-data-table>
         </v-card>
       </v-col>
       <v-col>
@@ -40,7 +46,13 @@
             :items="closed_tickets"
             :search="search"
             @click:row="handleClick"
-          ></v-data-table>
+          >
+            <template v-slot:item.created_at="{ item }">
+              <span>
+                {{ formatDate(item.created_at) }}
+              </span>
+            </template>
+          </v-data-table>
         </v-card>
       </v-col>
     </v-row>
@@ -61,12 +73,10 @@ export default {
           sortable: false,
           value: 'id',
         },
-        { text: 'User', value: 'user' },
+        { text: 'User', value: 'email' },
         { text: 'Status', value: 'status' },
-        { text: 'Account', value: 'account' },
         { text: 'Subject', value: 'subject' },
         { text: 'Created At', value: 'created_at' },
-        { text: 'Updated At', value: 'updated_at' },
       ],
     }
   },
@@ -86,6 +96,9 @@ export default {
     },
     handleClick(e) {
       window.location.href=`/tickets/${e.id}`;
+    },
+    formatDate(date_string) {
+      return new Date(date_string).toLocaleString()
     }
   }
 }

@@ -10,7 +10,7 @@
           Your support ticket has been sent!
         </v-alert>
         <v-card class="pa-5">
-          <h4>What is the issue your experiencing?</h4>
+          <h4>What is the issue you're experiencing?</h4>
           <v-row>
             <v-col cols="12" md="12">
               <v-text-field

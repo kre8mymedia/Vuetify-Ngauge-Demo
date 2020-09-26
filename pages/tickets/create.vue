@@ -75,7 +75,7 @@
           this.success = true;
           setTimeout(() => {
             this.success = false;
-          }, 3000)
+          }, 10000)
         }
       }
     }

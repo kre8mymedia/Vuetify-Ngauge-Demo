@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <v-card>
       <v-tabs
         v-model="tab"
@@ -23,7 +23,71 @@
           :key="item.tab"
         >
           <v-card flat>
-            <v-card-text v-if="item.content == 'list_tickets'">
+            <v-card-text v-if="item.content == 'create_ticket'">
+              <v-sheet class="pa-2" elevation="10" color="grey darken-3" rounded>
+                <v-row>
+                  <v-col>
+                    <v-card class="px-3 py-3">
+                      <v-alert v-for="error in errors"
+                        dense
+                        text
+                        type="error"
+                        :key="error.id">
+                        {{ error }}
+                      </v-alert>
+                      <v-alert v-if="success === true"
+                        dense
+                        text
+                        type="success"
+                      >
+                        Your support ticket has been sent!
+                      </v-alert>
+                      <h4>What is the issue you're experiencing?</h4>
+                      <v-row>
+                        <v-col cols="12" md="12">
+                          <!-- <v-text-field
+                            label="Email"
+                            outlined
+                            dense
+                            v-model="email"
+                          ></v-text-field> -->
+                          <v-form
+                            ref="form"
+                            v-model="valid"
+                            lazy-validation
+                            @submit="checkForm"
+                          >
+                            <v-text-field
+                              outlined
+                              dense
+                              v-model="email"
+                              label="Email"
+                              :rules="emailRules"
+                              required
+                            ></v-text-field>
+                            <v-text-field
+                              label="Subject"
+                              outlined
+                              dense
+                              v-model="subject"
+                              required
+                            ></v-text-field>
+                            <v-textarea
+                              outlined
+                              name="input-7-4"
+                              label="Enter a description of the problem..."
+                              v-model="body"
+                            ></v-textarea>
+                            <v-btn @click="createTicket" type="submit" color="gradient">Submit</v-btn>
+                          </v-form>
+                        </v-col>
+                      </v-row>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-sheet>
+            </v-card-text>
+            <v-card-text v-if="item.content == 'list_tickets'" >
               <v-sheet class="pa-2" elevation="10" color="grey darken-3" rounded>
                 <v-row>
                   <v-col>
@@ -83,47 +147,6 @@
                 </v-row>
               </v-sheet>
             </v-card-text>
-            <v-card-text v-if="item.content == 'create_ticket'">
-              <v-sheet class="pa-2" elevation="10" color="grey darken-3" rounded>
-                <v-row>
-                  <v-col>
-                    <v-alert v-if="success === true"
-                      dense
-                      text
-                      type="success"
-                    >
-                      Your support ticket has been sent!
-                    </v-alert>
-                    <v-card class="pa-5">
-                      <h4>What is the issue you're experiencing?</h4>
-                      <v-row>
-                        <v-col cols="12" md="12">
-                          <v-text-field
-                            label="Email"
-                            outlined
-                            dense
-                            v-model="email"
-                          ></v-text-field>
-                          <v-text-field
-                            label="Subject"
-                            outlined
-                            dense
-                            v-model="subject"
-                          ></v-text-field>
-                          <v-textarea
-                            outlined
-                            name="input-7-4"
-                            label="Enter a description of the problem..."
-                            v-model="body"
-                          ></v-textarea>
-                          <v-btn @click="createTicket" color="gradient">Submit</v-btn>
-                        </v-col>
-                      </v-row>
-                    </v-card>
-                  </v-col>
-                </v-row>
-              </v-sheet>
-            </v-card-text>
           </v-card>
         </v-tab-item>
       </v-tabs-items>
@@ -154,19 +177,25 @@ export default {
       // Tabs
       tab: null,
       items: [
-        { tab: 'List Tickets', content: 'list_tickets' },
         { tab: 'Create Ticket', content: 'create_ticket' },
+        { tab: 'List Tickets', content: 'list_tickets' },
       ],
       // Create Ticket
+      valid: true,
       email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
       subject: '',
       body: '',
       success: false,
-      error: false
+      error: false,
+      errors: []
     }
   },
   created() {
-    this.getTickets();
+    this.getTickets()
   },
   methods: {
     async getTickets() {
@@ -185,6 +214,11 @@ export default {
     formatDate(date_string) {
       return new Date(date_string).toLocaleString()
     },
+
+    /**--------------------------------------------
+     * Create a ticket
+     * --------------------------------------------
+     */
     createTicket() {
       const data = {
         email: this.email,
@@ -203,15 +237,40 @@ export default {
       .then(res => res.json())
       .then(data => {
         console.log(data)
+
+          if(data.status == 201) {
+            this.success = true;
+            this.subject = null;
+            this.body = null;
+          setTimeout(() => {
+            this.success = false;
+          }, 5000)
+        }
       })
       .catch(err => console.log(err))
+    },
 
-      if(data) {
-        this.success = true;
-        setTimeout(() => {
-          this.success = false;
-        }, 5000)
+    /**--------------------------------------------
+     * Forma Validation
+     * --------------------------------------------
+     */
+    checkForm: function (e) {
+      if (this.email && this.subject && this.description) {
+        return true;
       }
+
+      this.errors = [];
+
+      if (!this.email) {
+        this.errors.push('Email required.');
+      }
+      if (!this.subject) {
+        this.errors.push('Subject required.');
+      }
+      if (!this.body) {
+        this.errors.push('Description required.');
+      }
+      e.preventDefault();
     }
   }
 }

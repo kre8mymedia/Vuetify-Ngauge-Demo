@@ -46,6 +46,7 @@
             v-model="tab"
             background-color="gradient"
             centered
+            grow
             color="white"
             dark
           >

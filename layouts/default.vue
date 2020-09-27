@@ -37,19 +37,19 @@
       >
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
-      <v-btn
+      <!-- <v-btn
         icon
         @click.stop="clipped = !clipped"
       >
         <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
+      </v-btn> -->
+      <!-- <v-btn
         icon
         @click.stop="fixed = !fixed"
       >
         <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
+      </v-btn> -->
+      <v-toolbar-title class="navFont" v-text="title" />
       <v-spacer />
       <v-btn
         icon
@@ -118,22 +118,32 @@ export default {
           icon: 'mdi-account-voice',
           title: 'Conversations',
           to: '/conversations'
+        },
+        {
+          icon: 'mdi-calendar-month',
+          title: 'Events',
+          to: '/events'
         }
       ],
       miniVariant: true,
       right: true,
       rightDrawer: false,
-      title: 'Adaptech'
+      title: 'ADAPTECH'
     }
   }
 }
 </script>
 
 <style>
-
   .gradient {
     background: #8E2DE2;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .navFont {
+    font-family: 'Aldrich';
+    font-size: 2em;
+    font-stretch: expanded;
   }
 </style>

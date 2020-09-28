@@ -7,7 +7,7 @@
         >
           <v-btn
             outlined
-            class="mr-1"
+            class="mr-3"
             color="grey darken-2"
             @click="setToday"
           >

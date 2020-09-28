@@ -7,7 +7,7 @@
         >
           <v-btn
             outlined
-            class="mr-4"
+            class="mr-1"
             color="grey darken-2"
             @click="setToday"
           >
@@ -93,7 +93,7 @@
           offset-x
         >
           <v-card
-            color="grey lighten-4"
+            color="lighten-4"
             min-width="350px"
             flat
           >
@@ -119,7 +119,6 @@
             <v-card-actions>
               <v-btn
                 text
-                color="secondary"
                 @click="selectedOpen = false"
               >
                 Cancel
@@ -135,7 +134,8 @@
 <script>
   export default {
     data: () => ({
-      focus: '',
+      today: new Date().toISOString().substr(0, 10),
+		  focus: new Date().toISOString().substr(0, 10),
       type: 'month',
       typeToLabel: {
         month: 'Month',
@@ -149,8 +149,12 @@
       events: [],
       colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
       names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
+      start: null,
+      end: null,
+      details: null
     }),
     mounted () {
+      this.getEvents();
       this.$refs.calendar.checkChange()
     },
     methods: {
@@ -188,31 +192,60 @@
 
         nativeEvent.stopPropagation()
       },
+      async getEvents() {
+        const events = [];
+
+        fetch('/api/events')
+        .then(res => res.json())
+        .then(data => {
+          // console.log(data)
+
+          for(let i = 0; i < data.events.length; i++) {
+            // console.log(data.events[i])
+            let event = {
+              name: data.events[i].title,
+              start: new Date((data.events[i].start * 1000)),
+              end:  new Date((data.events[i].end * 1000)),
+              color: data.events[i].background_color,
+              details: data.events[i].description
+            }
+            events.push(event)
+          }
+        })
+        .catch(error => console.log(error))
+
+        this.events = events;
+        console.log(this.events)
+      },
+      // updateRange ({ start, end }) {
+      //   const events = []
+
+      //   const min = new Date(`${start.date}T00:00:00`)
+      //   const max = new Date(`${end.date}T23:59:59`)
+      //   const days = (max.getTime() - min.getTime()) / 86400000
+      //   const eventCount = this.rnd(days, days + 20)
+
+      //   for (let i = 0; i < eventCount; i++) {
+      //     const allDay = this.rnd(0, 3) === 0
+      //     const firstTimestamp = this.rnd(min.getTime(), max.getTime())
+      //     const first = new Date(firstTimestamp - (firstTimestamp % 900000))
+      //     const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
+      //     const second = new Date(first.getTime() + secondTimestamp)
+
+      //     events.push({
+      //       name: this.names[this.rnd(0, this.names.length - 1)],
+      //       start: first,
+      //       end: second,
+      //       color: this.colors[this.rnd(0, this.colors.length - 1)],
+      //       timed: !allDay,
+      //     })
+      //   }
+      //   this.events = events
+      // },
       updateRange ({ start, end }) {
-        const events = []
-
-        const min = new Date(`${start.date}T00:00:00`)
-        const max = new Date(`${end.date}T23:59:59`)
-        const days = (max.getTime() - min.getTime()) / 86400000
-        const eventCount = this.rnd(days, days + 20)
-
-        for (let i = 0; i < eventCount; i++) {
-          const allDay = this.rnd(0, 3) === 0
-          const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-          const first = new Date(firstTimestamp - (firstTimestamp % 900000))
-          const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
-          const second = new Date(first.getTime() + secondTimestamp)
-
-          events.push({
-            name: this.names[this.rnd(0, this.names.length - 1)],
-            start: first,
-            end: second,
-            color: this.colors[this.rnd(0, this.colors.length - 1)],
-            timed: !allDay,
-          })
-        }
-
-        this.events = events
+        // You could load events from an outside source (like database) now that we have the start and end dates on the calendar
+        this.start = start
+        this.end = end
       },
       rnd (a, b) {
         return Math.floor((b - a + 1) * Math.random()) + a

@@ -29,7 +29,7 @@
     data: () => ({
       items: [
         { title: 'View Products', url: '/products' },
-        { title: 'Schedule Appointment', url: '/appointments' },
+        { title: 'Schedule Appointment', url: '/events' },
         { title: 'Get Support', url: '/tickets' },
         { title: 'Upcoming Events', url: '/events' },
       ],

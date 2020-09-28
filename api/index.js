@@ -305,6 +305,8 @@ app.get('/events', (req, res) => {
  * APPOINTMEMTS Routes
  * ----------------------------------------
  */
+
+// LIST APPOINTMENTS
 app.get('/appointments', (req, res) => {
   fetch(`${serverHost}/api/v1/appointments`, {
     headers: {
@@ -316,6 +318,30 @@ app.get('/appointments', (req, res) => {
     res.send(data)
   })
   .catch((err) => console.log(err));
+})
+
+// CREATE APPOINTMENT
+app.post('/appointments', async (req, res) => {
+  const createAppointment = async () => {
+    try {
+      const response = await axios.post(`${serverHost}/api/v1/appointments`, req.body, {
+        headers: {
+          "Authorization": `Bearer ${api_key}`,
+          "Content-Type": 'application/json'
+        }
+      });
+      console.log(`Status: ${response.status}`);
+      console.log('Body: ', response.data);
+      res.send({
+        status: response.status,
+        data: response.data
+      })
+    } catch (err) {
+      console.error(err);
+      res.send({ error: err })
+    }
+  };
+  createAppointment();
 })
 
 module.exports = {

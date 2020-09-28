@@ -238,10 +238,10 @@ export default {
       .then(data => {
         console.log(data)
 
-          if(data.status == 201) {
-            this.success = true;
-            this.subject = null;
-            this.body = null;
+        if(data.status == 201) {
+          this.success = true;
+          this.subject = null;
+          this.body = null;
           setTimeout(() => {
             this.success = false;
           }, 5000)

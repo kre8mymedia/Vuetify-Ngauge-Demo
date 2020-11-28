@@ -10,7 +10,7 @@
       justify="center"
     >
       <v-col class="text-center">
-        <h1 class="myFont font-weight-thin mb-4">HELLO WORLD</h1>
+        <h1 class="myFont font-weight-thin mb-4">ADAPTECH</h1>
         <get-started></get-started>
       </v-col>
     </v-row>

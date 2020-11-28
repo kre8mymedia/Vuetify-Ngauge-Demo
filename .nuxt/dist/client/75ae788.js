@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{471:function(e,n,t){"use strict";t.r(n);var r=t(61),l=t(84),o=t.n(l),c=t(30),component=Object(r.a)({},(function(){var e=this.$createElement;return(this._self._c||e)("v-sheet",[this._v("\n  LEarn more aobut us\n")])}),[],!1,null,null,null);n.default=component.exports;o()(component,{VSheet:c.a})}}]);

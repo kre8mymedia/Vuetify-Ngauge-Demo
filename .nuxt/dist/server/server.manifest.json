@@ -1,0 +1,43 @@
+{
+  "entry": "server.js",
+  "files": {
+    "pages/about/index.js": "pages/about/index.js",
+    "pages/about/template.js": "pages/about/template.js",
+    "pages/appointments/index.js": "pages/appointments/index.js",
+    "pages/contact/index.js": "pages/contact/index.js",
+    "pages/conversations/_id/messages.js": "pages/conversations/_id/messages.js",
+    "pages/conversations/index.js": "pages/conversations/index.js",
+    "pages/events/index.js": "pages/events/index.js",
+    "pages/index.js": "pages/index.js",
+    "pages/inspire.js": "pages/inspire.js",
+    "pages/invoices/index.js": "pages/invoices/index.js",
+    "pages/orders/index.js": "pages/orders/index.js",
+    "pages/portfolio/index.js": "pages/portfolio/index.js",
+    "pages/products/_id.js": "pages/products/_id.js",
+    "pages/products/index.js": "pages/products/index.js",
+    "pages/tickets/_id.js": "pages/tickets/_id.js",
+    "pages/tickets/create.js": "pages/tickets/create.js",
+    "pages/tickets/index.js": "pages/tickets/index.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "pages/about/index.js": "pages/about/index.js.map",
+    "pages/about/template.js": "pages/about/template.js.map",
+    "pages/appointments/index.js": "pages/appointments/index.js.map",
+    "pages/contact/index.js": "pages/contact/index.js.map",
+    "pages/conversations/_id/messages.js": "pages/conversations/_id/messages.js.map",
+    "pages/conversations/index.js": "pages/conversations/index.js.map",
+    "pages/events/index.js": "pages/events/index.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "pages/inspire.js": "pages/inspire.js.map",
+    "pages/invoices/index.js": "pages/invoices/index.js.map",
+    "pages/orders/index.js": "pages/orders/index.js.map",
+    "pages/portfolio/index.js": "pages/portfolio/index.js.map",
+    "pages/products/_id.js": "pages/products/_id.js.map",
+    "pages/products/index.js": "pages/products/index.js.map",
+    "pages/tickets/_id.js": "pages/tickets/_id.js.map",
+    "pages/tickets/create.js": "pages/tickets/create.js.map",
+    "pages/tickets/index.js": "pages/tickets/index.js.map",
+    "server.js": "server.js.map"
+  }
+}

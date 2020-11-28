@@ -3890,12 +3890,12 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./pages/index.vue?vue&type=template&id=b1353da2&
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/Paralax.vue?vue&type=template&id=987b8460&
-var Paralaxvue_type_template_id_987b8460_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-parallax',{staticClass:"rounded",attrs:{"dark":"","height":"500","src":"data_center.jpg"}},[_c('v-row',{attrs:{"align":"center","justify":"center"}},[_c('v-col',{staticClass:"text-center"},[_c('h1',{staticClass:"myFont font-weight-thin mb-4"},[_vm._v("ADAPTECH")]),_vm._v(" "),_c('get-started')],1)],1)],1)}
-var Paralaxvue_type_template_id_987b8460_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/Paralax.vue?vue&type=template&id=924ce67c&
+var Paralaxvue_type_template_id_924ce67c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-parallax',{staticClass:"rounded",attrs:{"dark":"","height":"500","src":"data_center.jpg"}},[_c('v-row',{attrs:{"align":"center","justify":"center"}},[_c('v-col',{staticClass:"text-center"},[_c('h1',{staticClass:"myFont font-weight-thin mb-4"},[_vm._v("HELLO WORLD")]),_vm._v(" "),_c('get-started')],1)],1)],1)}
+var Paralaxvue_type_template_id_924ce67c_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./components/Paralax.vue?vue&type=template&id=987b8460&
+// CONCATENATED MODULE: ./components/Paralax.vue?vue&type=template&id=924ce67c&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/GetStarted.vue?vue&type=template&id=ac6a43b6&
 var GetStartedvue_type_template_id_ac6a43b6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-center"},[_c('v-menu',{attrs:{"offset-y":""},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
@@ -4212,8 +4212,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var Paralax_component = Object(componentNormalizer["a" /* default */])(
   components_Paralaxvue_type_script_lang_js_,
-  Paralaxvue_type_template_id_987b8460_render,
-  Paralaxvue_type_template_id_987b8460_staticRenderFns,
+  Paralaxvue_type_template_id_924ce67c_render,
+  Paralaxvue_type_template_id_924ce67c_staticRenderFns,
   false,
   injectStyles,
   null,

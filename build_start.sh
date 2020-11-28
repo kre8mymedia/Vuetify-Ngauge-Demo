@@ -1,7 +1,7 @@
 #!/bin/bash
 
-npm run build
+sudo npm run build
 echo
 echo ">> Done Building app"
 echo 
-npm run start
+sudo npm run start

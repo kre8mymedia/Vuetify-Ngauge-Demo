@@ -14,11 +14,14 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "body-parser": "^1.19.0",
+    "laravel-echo": "^1.8.1",
     "nuxt": "^2.0.0",
+    "pusher-js": "^7.0.0",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.9"
   },
   "devDependencies": {
+    "@nuxtjs/laravel-echo": "^1.1.0",
     "@nuxtjs/vuetify": "^1.0.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",

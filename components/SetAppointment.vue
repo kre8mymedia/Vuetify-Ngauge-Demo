@@ -248,7 +248,7 @@
       depressed
       color="gradient"
       type="submit"
-      @click="createAppointment"
+      @click.prevent="createAppointment"
     >
       Submit
     </v-btn>
@@ -270,7 +270,6 @@
         end_modal_date: false,
         end_modal_time: false,
         // Set Appointment Props
-        valid: false,
         firstname: '',
         lastname: '',
         nameRules: [
@@ -315,8 +314,11 @@
 
           if(data.status == 201) {
             this.success = true;
-            this.subject = null;
-            this.body = null;
+            // Clear data
+            this.start_date = null;
+            this.start_time = null;
+            this.end_date = null;
+            this.end_time = null;
             setTimeout(() => {
               this.success = false;
             }, 5000)
@@ -330,7 +332,7 @@
        * Form Validation
        * --------------------------------------------
        */
-      checkForm: function(e) {
+      checkForm(e) {
         if (
           this.email &&
           this.firstname &&

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo nuxt build
+npm run build
 echo
-echo "Done Building app"
+echo ">> Done Building app"
 echo 
-sudo nuxt start
+npm run start
